@@ -15,7 +15,7 @@ private:
     std::vector<std::string> words{ "TRY MY BRAND NEW PASSWORD GENERATOR" };
     std::vector<std::size_t> indexes{0};
     std::size_t index = 0;
-    bool isInList, RINVALID_INDEX , LINVALID_INDEX , forFuncIndexCheck = true;
+    bool isInList, RINVALID_INDEX , LINVALID_INDEX;
 
 public:
     void keyUp()
@@ -39,14 +39,12 @@ public:
             index = 0;
             std::cout << words[index];
             LINVALID_INDEX = false;
-            forFuncIndexCheck = false;
         }
         else if (RINVALID_INDEX)
         {
             index = words.size() - 1;
             std::cout << words[index];
             RINVALID_INDEX = false;
-            forFuncIndexCheck = false;
         }
 
         else if (index > 0)
@@ -73,14 +71,12 @@ public:
             index = 0;
             std::cout << words[index];
             LINVALID_INDEX = false;
-            forFuncIndexCheck = false;
         }
         else if (RINVALID_INDEX)
         {
             index = words.size() - 1;
             std::cout << words[index];
             RINVALID_INDEX = false;
-            forFuncIndexCheck = false;
         }
 
         else if (index < words.size() - 1)
@@ -153,19 +149,14 @@ public:
     const void quitList()
     {
         system("cls");
-        if (!forFuncIndexCheck)
-        {
-            std::cout << "INVALID_INDEX";
-            return;
-        }
-        else if (isInList)
+        if (index > 0 && index < words.size())
         {
             std::cout << words[index];
             return;
         }
         else
         {
-            std::cout << "YOU'RE NOT IN THE LIST MODE";
+            std::cout << "YOU'RE NOT IN THE LIST MODE" << std::endl << "INVALID_INDEX";
             return;
         }
     }
@@ -194,7 +185,7 @@ public:
     {
         std::cout << "Available commands:" << std::endl << "-------------------" << std::endl 
             << "Arrow Up: Move index up" << std::endl << "Arrow Down: Show list of words" 
-            << "Arrow Left: Move index left" << std::endl << "Arrow Right: Move index right" 
+            << std::endl << "Arrow Left: Move index left" << std::endl << "Arrow Right: Move index right" 
             << std::endl << "C: Clear console" <<std::endl << "I: Show list of indexes" 
             << std::endl << "Q: Quit list mode" << std::endl << "S: Delete all past words" 
             << std::endl << "J: Delete all past indixes" << std::endl << "Esc: Exit the program";
@@ -219,53 +210,53 @@ int main()
         }
         else if (key == 72)
         {
-            system("cls");
+            std::system("cls");
             yar.keyUp();
         }
         else if (key == 75)
         {
-            system("cls");
+            std::system("cls");
             yar.keyLeft();
         }
         else if (key == 77)
         {   
-            system("cls");
+            std::system("cls");
             yar.keyRight();
         }
         else if (key == 80)
         {
-            system("cls");
+            std::system("cls");
             yar.wordsList();
         }
         else if (key == 74 || key == 106)
         {
-            system("cls");
+            std::system("cls");
             yar.clearIndexes();
             std::cout << "INDEXES HAS BEEN CLEARED";
         }
         else if (key == 83 || key == 115) 
         {
-            system("cls");
+            std::system("cls");
             yar.clearWords();
             std::cout<<"WORDS HAS BEEN CLEARED";
         }
         else if (key == 99)
         {
-            system("cls");
+            std::system("cls");
         }
         else if (key == 105)
         {
-            system("cls");
+            std::system("cls");
             yar.indexesList();
         }
         else if (key == 108)
         {
-            system("cls");
+            std::system("cls");
             yar.showCommands();
         }
         else if (key == 113)
         {
-            system("cls");
+            std::system("cls");
             yar.quitList();
         }
     }
