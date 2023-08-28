@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <random>
-#include <ctime>
 #include <conio.h>
 
 //by mark "awful" tyrkba
